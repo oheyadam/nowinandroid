@@ -34,6 +34,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.android")
                 apply("nowinandroid.android.lint")
                 apply("com.dropbox.dependency-guard")
+                apply(DetektConventionPlugin::class.java)
             }
 
             extensions.configure<ApplicationExtension> {
@@ -49,5 +50,4 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             }
         }
     }
-
 }

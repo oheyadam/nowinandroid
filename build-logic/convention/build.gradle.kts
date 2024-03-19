@@ -42,7 +42,12 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.room.gradlePlugin)
+    compileOnly(libs.detekt.gradlePlugin)
     implementation(libs.truth)
+
+    // Enables using type-safe accessors to reference plugins from the [plugins] block defined in version catalogs.
+    // Context: https://github.com/gradle/gradle/issues/15383#issuecomment-779893192
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 }
 
 tasks {
@@ -109,6 +114,10 @@ gradlePlugin {
         register("jvmLibrary") {
             id = "nowinandroid.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"
+        }
+        register("travelperk.detekt") {
+            id = "nowinandroid.android.detekt"
+            implementationClass = "DetektConventionPlugin"
         }
     }
 }

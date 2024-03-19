@@ -28,6 +28,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             pluginManager.apply {
                 apply("nowinandroid.android.library")
                 apply("nowinandroid.android.hilt")
+                apply(DetektConventionPlugin::class.java)
             }
             extensions.configure<LibraryExtension> {
                 defaultConfig {
